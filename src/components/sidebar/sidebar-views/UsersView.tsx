@@ -28,16 +28,17 @@ function UsersView() {
         }
     }
     
-    const shareURL = async () => {
-        const url = window.location.href;
-        const id = url.substring(url.lastIndexOf('/') + 1); // Extract the ID part of the URL
-        try {
-            await navigator.share({ url: id });
-        } catch (error) {
-            toast.error("Unable to share URL");
-            console.log(error);
-        }
+   const shareURL = async () => {
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf('/') + 1); // Extract the ID part of the URL
+    try {
+        await navigator.share({ text: `Room ID: ${id}` });
+    } catch (error) {
+        toast.error("Unable to share Room ID");
+        console.log(error);
     }
+}
+
 
     const leaveRoom = () => {
         socket.disconnect()
